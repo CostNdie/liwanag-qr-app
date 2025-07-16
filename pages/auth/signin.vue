@@ -56,7 +56,7 @@
         Log In
       </v-btn>
       <div class="text-center my-6">OR</div>
-      <v-btn color="error" rounded="xl" class="text-capitalize" block><v-icon left>mdi-google</v-icon> Sign in With google</v-btn>
+      <v-btn color="error" @click="signinWithGoogle()" rounded="xl" class="text-capitalize" block><v-icon left>mdi-google</v-icon> Sign in With google</v-btn>
       <v-card-text class="text-center">
         <a
           class="text-blue text-decoration-none"
@@ -77,6 +77,12 @@
 </script>
 <script>
 export default {
-    layout: "auth"
+    layout: "auth",
+    middleware: "guest",
+    methods:{
+      signinWithGoogle(){
+        this.$auth.loginWith('google')
+      }
+    }
 }
 </script>
